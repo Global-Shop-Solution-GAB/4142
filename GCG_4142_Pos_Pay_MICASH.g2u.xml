@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyntaxEdit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BorderStyle>None</BorderStyle>
+  <Pages>
+    <DefaultPage>
+      <Header>
+        <Offset>
+          <X>0</X>
+          <Y>0</Y>
+        </Offset>
+      </Header>
+      <Footer>
+        <Offset>
+          <X>0</X>
+          <Y>0</Y>
+        </Offset>
+      </Footer>
+      <PageSize>
+        <Width>0</Width>
+        <Height>0</Height>
+      </PageSize>
+    </DefaultPage>
+  </Pages>
+  <DisplayStrings />
+  <Selection>
+    <SelectionRect>
+      <Location>
+        <X>0</X>
+        <Y>234</Y>
+      </Location>
+      <Size>
+        <Width>24</Width>
+        <Height>4</Height>
+      </Size>
+      <X>0</X>
+      <Y>234</Y>
+      <Width>24</Width>
+      <Height>4</Height>
+    </SelectionRect>
+    <Options>UseColors OverwriteBlocks SelectLineOnTripleClick CopyLineWhenEmpty SelectWordOnCtrlClick</Options>
+  </Selection>
+  <Gutter>
+    <LineNumbersForeColor>WindowText</LineNumbersForeColor>
+    <Options>PaintLineNumbers PaintBookMarks PaintLineModificators</Options>
+  </Gutter>
+  <Margin>
+    <Visible>false</Visible>
+  </Margin>
+  <LineStyles />
+  <LineSeparator />
+  <Printing>
+    <Footer>
+      <Offset>
+        <X>0</X>
+        <Y>0</Y>
+      </Offset>
+    </Footer>
+    <Header>
+      <Offset>
+        <X>0</X>
+        <Y>0</Y>
+      </Offset>
+    </Header>
+  </Printing>
+  <WhiteSpace />
+  <TextSource>
+    <Position>
+      <X>0</X>
+      <Y>234</Y>
+    </Position>
+    <Lexer>
+      <Scheme>
+        <Author>Quantum Whale, LLC.</Author>
+        <Copyright>Copyright (c) 2004 - 2014 Quantum Whale LLC.</Copyright>
+        <FileType>gas</FileType>
+        <Version>1.5</Version>
+        <Styles>
+          <Style>
+            <Name>idents</Name>
+            <ForeColor>ControlText</ForeColor>
+          </Style>
+          <Style>
+            <Name>numbers</Name>
+            <ForeColor>ControlText</ForeColor>
+          </Style>
+          <Style>
+            <Name>reswords</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>comments</Name>
+            <ForeColor>Green</ForeColor>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>xmlcomments</Name>
+            <ForeColor>Gray</ForeColor>
+          </Style>
+          <Style>
+            <Name>symbols</Name>
+            <ForeColor>WindowText</ForeColor>
+          </Style>
+          <Style>
+            <Name>whitespace</Name>
+            <ForeColor>WindowText</ForeColor>
+          </Style>
+          <Style>
+            <Name>strings</Name>
+            <ForeColor>Maroon</ForeColor>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>directives</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>htmlparams</Name>
+            <ForeColor>Red</ForeColor>
+          </Style>
+          <Style>
+            <Name>syntax errors</Name>
+            <ForeColor>Red</ForeColor>
+          </Style>
+          <Style>
+            <Name>codes nippets</Name>
+            <ForeColor>Black</ForeColor>
+            <BackColor>255:180:228:180</BackColor>
+          </Style>
+          <Style>
+            <Name>GabReservedWords</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabTokenWithBrackets</Name>
+            <ForeColor>Gray</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabFunctionIntrinsicDebug</Name>
+            <ForeColor>White</ForeColor>
+            <BackColor>Red</BackColor>
+            <FontStyle>Bold</FontStyle>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>GabVariable</Name>
+            <ForeColor>Teal</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabVariableSystemDefined</Name>
+            <ForeColor>Teal</ForeColor>
+            <FontStyle>Bold Italic</FontStyle>
+          </Style>
+          <Style>
+            <Name>GabGui</Name>
+            <ForeColor>OrangeRed</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabProgramSubStartEnd</Name>
+            <ForeColor>Black</ForeColor>
+            <BackColor>LightGray</BackColor>
+            <FontStyle>Bold</FontStyle>
+            <PlainText>true</PlainText>
+          </Style>
+        </Styles>
+      </Scheme>
+    </Lexer>
+    <TextStrings>
+      <Lines>
+        <string>Program.Sub.ScreenSU.Start</string>
+        <string>Gui.F_POSPAY..Create</string>
+        <string>Gui.F_POSPAY..Caption("Positive Pay MICASH")</string>
+        <string>Gui.F_POSPAY..Size(4995,1860)</string>
+        <string>Gui.F_POSPAY..MinX(0)</string>
+        <string>Gui.F_POSPAY..MinY(0)</string>
+        <string>Gui.F_POSPAY..Position(0,0)</string>
+        <string>Gui.F_POSPAY..BackColor(-2147483633)</string>
+        <string>Gui.F_POSPAY..MaxButton(False)</string>
+        <string>Gui.F_POSPAY..MousePointer(0)</string>
+        <string>Gui.F_POSPAY..Sizeable(False)</string>
+        <string>Gui.F_POSPAY..Event(UnLoad,Unload)</string>
+        <string>Gui.F_POSPAY.dtpStart.Create(DatePicker)</string>
+        <string>Gui.F_POSPAY.dtpStart.Size(1935,285)</string>
+        <string>Gui.F_POSPAY.dtpStart.Position(150,330)</string>
+        <string>Gui.F_POSPAY.dtpEnd.Create(DatePicker)</string>
+        <string>Gui.F_POSPAY.dtpEnd.Size(1935,285)</string>
+        <string>Gui.F_POSPAY.dtpEnd.Position(2625,330)</string>
+        <string>Gui.F_POSPAY.lbl1.Create(Label,"Start Date",True,870,255,0,150,120,True,0,"Arial",8,-986896,0)</string>
+        <string>Gui.F_POSPAY.lbl2.Create(Label,"To:",True,450,255,0,2235,405,True,0,"Arial",8,-986896,0)</string>
+        <string>Gui.F_POSPAY.lbl3.Create(Label,"End Date",True,885,255,0,2625,120,True,0,"Arial",8,-986896,0)</string>
+        <string>Gui.F_POSPAY.cmdProcess.Create(Button)</string>
+        <string>Gui.F_POSPAY.cmdProcess.Size(855,375)</string>
+        <string>Gui.F_POSPAY.cmdProcess.Position(150,765)</string>
+        <string>Gui.F_POSPAY.cmdProcess.Caption("Process")</string>
+        <string>Gui.F_POSPAY.cmdProcess.DefaultValue("Process")</string>
+        <string>Gui.F_POSPAY.cmdProcess.Event(Click,Create_File)</string>
+        <string>Program.Sub.ScreenSU.End</string>
+        <string />
+        <string>Program.Sub.Preflight.Start</string>
+        <string>Program.Sub.Preflight.End</string>
+        <string />
+        <string>Program.Sub.Main.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Main_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string />
+        <string>'Open Connection and Show Screen</string>
+        <string>F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)</string>
+        <string>Gui.F_POSPAY..Show</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Main_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_4142_Pos_Pay_MICASH.g2u.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	F.Intrinsic.Control.CallSub(unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>Program.Sub.Main.End</string>
+        <string />
+        <string>Program.Sub.Create_File.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Create_File_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string>V.Local.dBeg.Declare(Date)</string>
+        <string>V.Local.dEnd.Declare(Date)</string>
+        <string>V.Local.dTemp.Declare(Date)</string>
+        <string>V.Local.sSQL.Declare(String)</string>
+        <string>'Positive pay export string that will be the file</string>
+        <string>V.Local.sPosPay.Declare(String)</string>
+        <string>V.Local.sBankNum.Declare(String)</string>
+        <string>V.Local.sAccountNum.Declare(String)</string>
+        <string>V.Local.sCheckSerial.Declare(String)</string>
+        <string>V.Local.sCheckAmt.Declare(String)</string>
+        <string>V.Local.dIssueDate.Declare(String)</string>
+        <string>V.Local.sIssueDate.Declare(String)</string>
+        <string>V.Local.sPayee.Declare(String)</string>
+        <string />
+        <string>'Hide screen</string>
+        <string>Gui.F_POSPAY..Visible(False)</string>
+        <string />
+        <string>'Set selected date range</string>
+        <string>V.Local.dBeg.Set(V.Screen.F_POSPAY!dtpStart.Value)</string>
+        <string>V.Local.dEnd.Set(V.Screen.F_POSPAY!dtpEnd.Value)</string>
+        <string />
+        <string>'If user selects a Beg date that's larger than the end date swap them.</string>
+        <string>F.Intrinsic.Control.If(V.Local.dBeg,&gt;,V.Local.dEnd)</string>
+        <string>	V.Local.dTemp.Set(V.Local.dEnd)</string>
+        <string>	V.Local.dEnd.Set(V.Local.dBeg)</string>
+        <string>	V.Local.dBeg.Set(V.Local.dTemp)</string>
+        <string>F.Intrinsic.Control.EndIf</string>
+        <string>'Inform user that file is being written</string>
+        <string>F.Intrinsic.UI.InvokeWaitDialog("Data for file is being loaded.")</string>
+        <string />
+        <string>'Bank Number is always the same value</string>
+        <string>V.Local.sBankNum.Set("992")</string>
+        <string />
+        <string>F.Intrinsic.String.Build("SELECT * FROM V_CHECKS_LOG WHERE CK_OR_VOID = 'C' AND CK_DATE BETWEEN '{0}' AND '{1}'",V.Local.dBeg.PervasiveDate,V.Local.dEnd.PervasiveDate,V.Local.sSQL)</string>
+        <string>F.ODBC.Connection!con.OpenLocalRecordsetRO("rstChecks",V.Local.sSQL)</string>
+        <string>	</string>
+        <string>'Loop through the records if any exist and add to export string</string>
+        <string>F.Intrinsic.Control.DoUntil(V.ODBC.con!rstChecks.EOF,=,True)</string>
+        <string>	'Set additional information that differs for each line</string>
+        <string>	V.Local.sAccountNum.Set(V.ODBC.con!rstChecks.FieldValTrim!ACCT_NO)</string>
+        <string>	V.Local.sCheckSerial.Set(V.ODBC.con!rstChecks.FieldValTrim!CK_NO)</string>
+        <string>	V.Local.sCheckAmt.Set(V.ODBC.con!rstChecks.FieldValTrim!AMOUNT)</string>
+        <string>	V.Local.dIssueDate.Set(V.ODBC.con!rstChecks.FieldValTrim!CK_DATE)</string>
+        <string>	V.Local.sPayee.Set(V.ODBC.con!rstChecks.FieldValTrim!PAYEE)</string>
+        <string>	</string>
+        <string>	'Format Account number to be 10 digits long</string>
+        <string>	F.Intrinsic.String.LPad(V.Local.sAccountNum,"0",10,V.Local.sAccountNum)</string>
+        <string>	'Format Check number to be 10 digits long</string>
+        <string>	F.Intrinsic.String.LPad(V.Local.sCheckSerial,"0",10,V.Local.sCheckSerial)</string>
+        <string>	'Remove the decimal place in the amount</string>
+        <string>	F.Intrinsic.String.Replace(V.Local.sCheckAmt,".","",V.Local.sCheckAmt)</string>
+        <string>	'Format Check Amt to be 10 digits long</string>
+        <string>	F.Intrinsic.String.LPad(V.Local.sCheckAmt,"0",10,V.Local.sCheckAmt)</string>
+        <string>	'Format Issue Date to be of the format MMDDYY</string>
+        <string>	F.Intrinsic.String.Format(V.Local.dIssueDate,"mmddyy",V.Local.sIssueDate)</string>
+        <string>	'Format Payee so that it is 96 characters long</string>
+        <string>	F.Intrinsic.String.RPad(V.Local.sPayee," ",96,V.Local.sPayee)</string>
+        <string>	</string>
+        <string>	'Check to see if the variable is empty, if so this is the first string.</string>
+        <string>	F.Intrinsic.Control.If(V.Local.sPosPay,=,"")</string>
+        <string>		F.Intrinsic.String.Build("C{0}00{1} RA {2}{3}{4}{5}",V.Local.sBankNum,V.Local.sAccountNum,V.Local.sCheckSerial,V.Local.sCheckAmt,V.Local.sIssueDate,V.Local.sPayee,V.Local.sPosPay)</string>
+        <string>	F.Intrinsic.Control.Else</string>
+        <string>		F.Intrinsic.String.Build("{0}{1}C{2}00{3} RA {4}{5}{6}{7}",V.Local.sPosPay,V.Ambient.NewLine,V.Local.sBankNum,V.Local.sAccountNum,V.Local.sCheckSerial,V.Local.sCheckAmt,V.Local.sIssueDate,V.Local.sPayee,V.Local.sPosPay)</string>
+        <string>	F.Intrinsic.Control.EndIf</string>
+        <string>	</string>
+        <string>	F.ODBC.con!rstChecks.MoveNext</string>
+        <string>F.Intrinsic.Control.Loop</string>
+        <string>'Close rstChecks since we're done with it</string>
+        <string>F.ODBC.con!rstChecks.Close</string>
+        <string />
+        <string>'Get payroll information for file</string>
+        <string>F.Intrinsic.String.Build("SELECT * FROM V_PAYROLL_CHECKS WHERE CK_OR_VOID = 'C' AND CK_DATE BETWEEN '{0}' AND '{1}'",V.Local.dBeg.PervasiveDate,V.Local.dEnd.PervasiveDate,V.Local.sSQL)</string>
+        <string>F.ODBC.Connection!con.OpenLocalRecordsetRO("rstPayroll",V.Local.sSQL)</string>
+        <string>	</string>
+        <string>'Loop through the records if any exist and add to export string</string>
+        <string>F.Intrinsic.Control.DoUntil(V.ODBC.con!rstPayroll.EOF,=,True)</string>
+        <string>	'Set additional information that differs for each line</string>
+        <string>	V.Local.sAccountNum.Set(V.ODBC.con!rstPayroll.FieldValTrim!ACCT_NO)</string>
+        <string>	V.Local.sCheckSerial.Set(V.ODBC.con!rstPayroll.FieldValTrim!CK_NO)</string>
+        <string>	V.Local.sCheckAmt.Set(V.ODBC.con!rstPayroll.FieldValTrim!AMOUNT)</string>
+        <string>	V.Local.dIssueDate.Set(V.ODBC.con!rstPayroll.FieldValTrim!CK_DATE)</string>
+        <string>	V.Local.sPayee.Set(V.ODBC.con!rstPayroll.FieldValTrim!PAYEE)</string>
+        <string>	</string>
+        <string>	'Format Account number to be 10 digits long</string>
+        <string>	F.Intrinsic.String.LPad(V.Local.sAccountNum,"0",10,V.Local.sAccountNum)</string>
+        <string>	'Format Check number to be 10 digits long</string>
+        <string>	F.Intrinsic.String.LPad(V.Local.sCheckSerial,"0",10,V.Local.sCheckSerial)</string>
+        <string>	'Remove the decimal place in the amount</string>
+        <string>	F.Intrinsic.String.Replace(V.Local.sCheckAmt,".","",V.Local.sCheckAmt)</string>
+        <string>	'Format Check Amt to be 10 digits long</string>
+        <string>	F.Intrinsic.String.LPad(V.Local.sCheckAmt,"0",10,V.Local.sCheckAmt)</string>
+        <string>	'Format Issue Date to be of the format MMDDYY</string>
+        <string>	F.Intrinsic.String.Format(V.Local.dIssueDate,"mmddyy",V.Local.sIssueDate)</string>
+        <string>	'Format Payee so that it is 96 characters long</string>
+        <string>	F.Intrinsic.String.RPad(V.Local.sPayee," ",96,V.Local.sPayee)</string>
+        <string>	</string>
+        <string>	'Check to see if the variable is empty, if so this is the first string.</string>
+        <string>	F.Intrinsic.Control.If(V.Local.sPosPay,=,"")</string>
+        <string>		F.Intrinsic.String.Build("C{0}00{1} RA {2}{3}{4}{5}",V.Local.sBankNum,V.Local.sAccountNum,V.Local.sCheckSerial,V.Local.sCheckAmt,V.Local.sIssueDate,V.Local.sPayee,V.Local.sPosPay)</string>
+        <string>	F.Intrinsic.Control.Else</string>
+        <string>		F.Intrinsic.String.Build("{0}{1}C{2}00{3} RA {4}{5}{6}{7}",V.Local.sPosPay,V.Ambient.NewLine,V.Local.sBankNum,V.Local.sAccountNum,V.Local.sCheckSerial,V.Local.sCheckAmt,V.Local.sIssueDate,V.Local.sPayee,V.Local.sPosPay)</string>
+        <string>	F.Intrinsic.Control.EndIf</string>
+        <string>	</string>
+        <string>	F.ODBC.con!rstPayroll.MoveNext</string>
+        <string>F.Intrinsic.Control.Loop</string>
+        <string />
+        <string>F.ODBC.con!rstPayroll.Close</string>
+        <string />
+        <string>'Close wait dialog</string>
+        <string>F.Intrinsic.UI.CloseWaitDialog</string>
+        <string />
+        <string>'Write file if data exists</string>
+        <string>F.Intrinsic.Control.If(V.Local.sPosPay.Trim,&lt;&gt;,"")</string>
+        <string>	F.Intrinsic.Control.CallSub(write_file,"Data",V.Local.sPosPay)</string>
+        <string>F.Intrinsic.Control.Else</string>
+        <string>	F.Intrinsic.UI.Msgbox("No data found. File not created.","No Data")</string>
+        <string>	F.Intrinsic.Control.CallSub(unload)</string>
+        <string>F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Create_File_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_4142_Pos_Pay_MICASH.g2u.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	F.Intrinsic.Control.CallSub(unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>Program.Sub.Create_File.End</string>
+        <string />
+        <string>Program.Sub.Write_File.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Write_File_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string>V.Local.sNow.Declare(String)</string>
+        <string>V.Local.sFile.Declare(String)</string>
+        <string />
+        <string>'Format current day and time for filename</string>
+        <string>F.Intrinsic.String.Format(V.Ambient.Now,"mmddyyyyhhnnss",V.Local.sNow)</string>
+        <string>'Filepath is always the same</string>
+        <string>F.Intrinsic.String.Build("{0}\PosPay\PP{1}.txt",V.Caller.FilesDir,V.Local.sNow,V.Local.sFile)</string>
+        <string>'Write the data to the file</string>
+        <string>F.Intrinsic.File.String2File(V.Local.sFile,V.Args.Data)</string>
+        <string>'Program is finished at this point, so close program</string>
+        <string>F.Intrinsic.Control.CallSub(unload)</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Write_File_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_4142_Pos_Pay_MICASH.g2u.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	F.Intrinsic.Control.CallSub(unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>Program.Sub.Write_File.End</string>
+        <string />
+        <string>Program.Sub.Unload.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Unload_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string />
+        <string>'Close connection and end program</string>
+        <string>F.ODBC.Connection!con.Close</string>
+        <string>F.Intrinsic.Control.End</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Unload_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_4142_Pos_Pay_MICASH.g2u.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	F.Intrinsic.Control.End</string>
+        <string />
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>Program.Sub.Unload.End</string>
+        <string />
+        <string>Program.Sub.Comments.Start</string>
+        <string>${$0$}$Positive Pay MICASH Export$}$BCC$}$7/19/2016 9:18:22 AM$}$False</string>
+        <string>${$2$}$$}$$}$0$}$4$}$Custom Menu Item$}$7/19/2016 1:43:32 PM$}$Accounts Payable -&gt; Transactions -&gt; Positive Pay MICASH</string>
+        <string>${$3$}$0$}$$}$0$}$-1$}$$}$12:00:00 AM$}$Positive Pay export program will write a fixed width file to be accepted by MICASH. File directory ?Global\Files\PosPay? required to be set up prior to delivery. The export files will be saved to that directory automatically.</string>
+        <string>Program.Sub.Comments.End</string>
+      </Lines>
+    </TextStrings>
+  </TextSource>
+  <Scrolling>
+    <WindowOriginY>153</WindowOriginY>
+    <Options>None</Options>
+  </Scrolling>
+  <Outlining>
+    <AllowOutlining>true</AllowOutlining>
+    <ImageSize>8</ImageSize>
+    <Ranges>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>0</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>27</Y>
+        </EndPoint>
+        <Text>Program.Sub.ScreenSU</Text>
+        <DisplayText>Program.Sub.ScreenSU</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>29</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>30</Y>
+        </EndPoint>
+        <Text>Program.Sub.Preflight</Text>
+        <DisplayText>Program.Sub.Preflight</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>32</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>50</Y>
+        </EndPoint>
+        <Text>Program.Sub.Main</Text>
+        <DisplayText>Program.Sub.Main</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>52</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>184</Y>
+        </EndPoint>
+        <Text>Program.Sub.Create_File</Text>
+        <DisplayText>Program.Sub.Create_File</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>186</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>211</Y>
+        </EndPoint>
+        <Text>Program.Sub.Write_File</Text>
+        <DisplayText>Program.Sub.Write_File</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>213</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>232</Y>
+        </EndPoint>
+        <Text>Program.Sub.Unload</Text>
+        <DisplayText>Program.Sub.Unload</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>234</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>238</Y>
+        </EndPoint>
+        <Text>Program.Sub.Comments</Text>
+        <DisplayText>Program.Sub.Comments</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+    </Ranges>
+  </Outlining>
+  <HyperText />
+  <Spelling />
+  <Braces />
+</SyntaxEdit>
