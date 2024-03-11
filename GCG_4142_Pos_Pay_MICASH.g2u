@@ -1,0 +1,250 @@
+Program.Sub.ScreenSU.Start
+Gui.F_POSPAY..Create
+Gui.F_POSPAY..Caption("Positive Pay MICASH")
+Gui.F_POSPAY..Size(4995,1860)
+Gui.F_POSPAY..MinX(0)
+Gui.F_POSPAY..MinY(0)
+Gui.F_POSPAY..Position(0,0)
+Gui.F_POSPAY..BackColor(-2147483633)
+Gui.F_POSPAY..MaxButton(False)
+Gui.F_POSPAY..MousePointer(0)
+Gui.F_POSPAY..Sizeable(False)
+Gui.F_POSPAY..Event(UnLoad,Unload)
+Gui.F_POSPAY.dtpStart.Create(DatePicker)
+Gui.F_POSPAY.dtpStart.Size(1935,285)
+Gui.F_POSPAY.dtpStart.Position(150,330)
+Gui.F_POSPAY.dtpEnd.Create(DatePicker)
+Gui.F_POSPAY.dtpEnd.Size(1935,285)
+Gui.F_POSPAY.dtpEnd.Position(2625,330)
+Gui.F_POSPAY.lbl1.Create(Label,"Start Date",True,870,255,0,150,120,True,0,"Arial",8,-986896,0)
+Gui.F_POSPAY.lbl2.Create(Label,"To:",True,450,255,0,2235,405,True,0,"Arial",8,-986896,0)
+Gui.F_POSPAY.lbl3.Create(Label,"End Date",True,885,255,0,2625,120,True,0,"Arial",8,-986896,0)
+Gui.F_POSPAY.cmdProcess.Create(Button)
+Gui.F_POSPAY.cmdProcess.Size(855,375)
+Gui.F_POSPAY.cmdProcess.Position(150,765)
+Gui.F_POSPAY.cmdProcess.Caption("Process")
+Gui.F_POSPAY.cmdProcess.DefaultValue("Process")
+Gui.F_POSPAY.cmdProcess.Event(Click,Create_File)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Open Connection and Show Screen
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+Gui.F_POSPAY..Show
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4142_Pos_Pay_MICASH.g2u.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(unload)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Main.End
+
+Program.Sub.Create_File.Start
+F.Intrinsic.Control.SetErrorHandler("Create_File_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.dBeg.Declare(Date)
+V.Local.dEnd.Declare(Date)
+V.Local.dTemp.Declare(Date)
+V.Local.sSQL.Declare(String)
+'Positive pay export string that will be the file
+V.Local.sPosPay.Declare(String)
+V.Local.sBankNum.Declare(String)
+V.Local.sAccountNum.Declare(String)
+V.Local.sCheckSerial.Declare(String)
+V.Local.sCheckAmt.Declare(String)
+V.Local.dIssueDate.Declare(String)
+V.Local.sIssueDate.Declare(String)
+V.Local.sPayee.Declare(String)
+
+'Hide screen
+Gui.F_POSPAY..Visible(False)
+
+'Set selected date range
+V.Local.dBeg.Set(V.Screen.F_POSPAY!dtpStart.Value)
+V.Local.dEnd.Set(V.Screen.F_POSPAY!dtpEnd.Value)
+
+'If user selects a Beg date that's larger than the end date swap them.
+F.Intrinsic.Control.If(V.Local.dBeg,>,V.Local.dEnd)
+	V.Local.dTemp.Set(V.Local.dEnd)
+	V.Local.dEnd.Set(V.Local.dBeg)
+	V.Local.dBeg.Set(V.Local.dTemp)
+F.Intrinsic.Control.EndIf
+'Inform user that file is being written
+F.Intrinsic.UI.InvokeWaitDialog("Data for file is being loaded.")
+
+'Bank Number is always the same value
+V.Local.sBankNum.Set("992")
+
+F.Intrinsic.String.Build("SELECT * FROM V_CHECKS_LOG WHERE CK_OR_VOID = 'C' AND CK_DATE BETWEEN '{0}' AND '{1}'",V.Local.dBeg.PervasiveDate,V.Local.dEnd.PervasiveDate,V.Local.sSQL)
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rstChecks",V.Local.sSQL)
+	
+'Loop through the records if any exist and add to export string
+F.Intrinsic.Control.DoUntil(V.ODBC.con!rstChecks.EOF,=,True)
+	'Set additional information that differs for each line
+	V.Local.sAccountNum.Set(V.ODBC.con!rstChecks.FieldValTrim!ACCT_NO)
+	V.Local.sCheckSerial.Set(V.ODBC.con!rstChecks.FieldValTrim!CK_NO)
+	V.Local.sCheckAmt.Set(V.ODBC.con!rstChecks.FieldValTrim!AMOUNT)
+	V.Local.dIssueDate.Set(V.ODBC.con!rstChecks.FieldValTrim!CK_DATE)
+	
+	'We need to get the full payee name, not just the truncated characters
+	F.Intrinsic.String.Build("SELECT NAME_VENDOR FROM V_VENDOR_MASTER WHERE VENDOR = '{0}'",V.ODBC.con!rstChecks.FieldValTrim!VEND_NO,V.Local.sSQL)
+	F.ODBC.Connection!con.OpenLocalRecordsetRO("rstPayee",V.Local.sSQL)
+	
+	F.Intrinsic.Control.If(V.ODBC.con!rstPayee.EOF,<>,True)
+		V.Local.sPayee.Set(V.ODBC.con!rstPayee.FieldValTrim!NAME_VENDOR)
+	F.Intrinsic.Control.Else
+		V.Local.sPayee.Set(V.ODBC.con!rstChecks.FieldValTrim!PAYEE)
+	F.Intrinsic.Control.EndIf
+	
+	F.ODBC.con!rstPayee.Close
+	
+	'Format Account number to be 10 digits long
+	F.Intrinsic.String.LPad(V.Local.sAccountNum,"0",10,V.Local.sAccountNum)
+	'Format Check number to be 10 digits long
+	F.Intrinsic.String.LPad(V.Local.sCheckSerial,"0",10,V.Local.sCheckSerial)
+	'Remove the decimal place in the amount
+	F.Intrinsic.String.Replace(V.Local.sCheckAmt,".","",V.Local.sCheckAmt)
+	'Format Check Amt to be 10 digits long
+	F.Intrinsic.String.LPad(V.Local.sCheckAmt,"0",10,V.Local.sCheckAmt)
+	'Format Issue Date to be of the format MMDDYY
+	F.Intrinsic.String.Format(V.Local.dIssueDate,"mmddyy",V.Local.sIssueDate)
+	'Format Payee so that it is 96 characters long
+	F.Intrinsic.String.RPad(V.Local.sPayee," ",96,V.Local.sPayee)
+	
+	'Check to see if the variable is empty, if so this is the first string.
+	F.Intrinsic.Control.If(V.Local.sPosPay,=,"")
+		F.Intrinsic.String.Build("C{0}00{1} RA {2}{3}{4}{5}",V.Local.sBankNum,V.Local.sAccountNum,V.Local.sCheckSerial,V.Local.sCheckAmt,V.Local.sIssueDate,V.Local.sPayee,V.Local.sPosPay)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("{0}{1}C{2}00{3} RA {4}{5}{6}{7}",V.Local.sPosPay,V.Ambient.NewLine,V.Local.sBankNum,V.Local.sAccountNum,V.Local.sCheckSerial,V.Local.sCheckAmt,V.Local.sIssueDate,V.Local.sPayee,V.Local.sPosPay)
+	F.Intrinsic.Control.EndIf
+	
+	F.ODBC.con!rstChecks.MoveNext
+F.Intrinsic.Control.Loop
+'Close rstChecks since we're done with it
+F.ODBC.con!rstChecks.Close
+
+'Get payroll information for file
+F.Intrinsic.String.Build("SELECT * FROM V_PAYROLL_CHECKS WHERE CK_OR_VOID = 'C' AND CK_DATE BETWEEN '{0}' AND '{1}'",V.Local.dBeg.PervasiveDate,V.Local.dEnd.PervasiveDate,V.Local.sSQL)
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rstPayroll",V.Local.sSQL)
+	
+'Loop through the records if any exist and add to export string
+F.Intrinsic.Control.DoUntil(V.ODBC.con!rstPayroll.EOF,=,True)
+	'Set additional information that differs for each line
+	V.Local.sAccountNum.Set(V.ODBC.con!rstPayroll.FieldValTrim!ACCT_NO)
+	V.Local.sCheckSerial.Set(V.ODBC.con!rstPayroll.FieldValTrim!CK_NO)
+	V.Local.sCheckAmt.Set(V.ODBC.con!rstPayroll.FieldValTrim!AMOUNT)
+	V.Local.dIssueDate.Set(V.ODBC.con!rstPayroll.FieldValTrim!CK_DATE)
+	V.Local.sPayee.Set(V.ODBC.con!rstPayroll.FieldValTrim!PAYEE)
+	
+	'Format Account number to be 10 digits long
+	F.Intrinsic.String.LPad(V.Local.sAccountNum,"0",10,V.Local.sAccountNum)
+	'Format Check number to be 10 digits long
+	F.Intrinsic.String.LPad(V.Local.sCheckSerial,"0",10,V.Local.sCheckSerial)
+	'Remove the decimal place in the amount
+	F.Intrinsic.String.Replace(V.Local.sCheckAmt,".","",V.Local.sCheckAmt)
+	'Format Check Amt to be 10 digits long
+	F.Intrinsic.String.LPad(V.Local.sCheckAmt,"0",10,V.Local.sCheckAmt)
+	'Format Issue Date to be of the format MMDDYY
+	F.Intrinsic.String.Format(V.Local.dIssueDate,"mmddyy",V.Local.sIssueDate)
+	'Format Payee so that it is 96 characters long
+	F.Intrinsic.String.RPad(V.Local.sPayee," ",96,V.Local.sPayee)
+	
+	'Check to see if the variable is empty, if so this is the first string.
+	F.Intrinsic.Control.If(V.Local.sPosPay,=,"")
+		F.Intrinsic.String.Build("C{0}00{1} RA {2}{3}{4}{5}",V.Local.sBankNum,V.Local.sAccountNum,V.Local.sCheckSerial,V.Local.sCheckAmt,V.Local.sIssueDate,V.Local.sPayee,V.Local.sPosPay)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("{0}{1}C{2}00{3} RA {4}{5}{6}{7}",V.Local.sPosPay,V.Ambient.NewLine,V.Local.sBankNum,V.Local.sAccountNum,V.Local.sCheckSerial,V.Local.sCheckAmt,V.Local.sIssueDate,V.Local.sPayee,V.Local.sPosPay)
+	F.Intrinsic.Control.EndIf
+	
+	F.ODBC.con!rstPayroll.MoveNext
+F.Intrinsic.Control.Loop
+
+F.ODBC.con!rstPayroll.Close
+
+'Close wait dialog
+F.Intrinsic.UI.CloseWaitDialog
+
+'Write file if data exists
+F.Intrinsic.Control.If(V.Local.sPosPay.Trim,<>,"")
+	F.Intrinsic.Control.CallSub(write_file,"Data",V.Local.sPosPay)
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("No data found. File not created.","No Data")
+	F.Intrinsic.Control.CallSub(unload)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Create_File_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4142_Pos_Pay_MICASH.g2u.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(unload)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Create_File.End
+
+Program.Sub.Write_File.Start
+F.Intrinsic.Control.SetErrorHandler("Write_File_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sNow.Declare(String)
+V.Local.sFile.Declare(String)
+
+'Format current day and time for filename
+F.Intrinsic.String.Format(V.Ambient.Now,"mmddyyyyhhnnss",V.Local.sNow)
+'Filepath is always the same
+F.Intrinsic.String.Build("{0}\PosPay\PP{1}.txt",V.Caller.FilesDir,V.Local.sNow,V.Local.sFile)
+'Write the data to the file
+F.Intrinsic.File.String2File(V.Local.sFile,V.Args.Data)
+'Program is finished at this point, so close program
+F.Intrinsic.Control.CallSub(unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Write_File_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4142_Pos_Pay_MICASH.g2u.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(unload)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Write_File.End
+
+Program.Sub.Unload.Start
+F.Intrinsic.Control.SetErrorHandler("Unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Close connection and end program
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_4142_Pos_Pay_MICASH.g2u.g2c",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+
+Function.Intrinsic.Control.EndIf
+Program.Sub.Unload.End
+
+Program.Sub.Comments.Start
+${$0$}$Positive Pay MICASH Export$}$BCC$}$7/19/2016 9:18:22 AM$}$False
+${$2$}$$}$$}$0$}$4$}$Custom Menu Item$}$7/19/2016 1:43:32 PM$}$Accounts Payable -> Transactions -> Positive Pay MICASH
+${$3$}$0$}$$}$0$}$-1$}$$}$12:00:00 AM$}$Positive Pay export program will write a fixed width file to be accepted by MICASH. File directory ?Global\Files\PosPay? required to be set up prior to delivery. The export files will be saved to that directory automatically.
+Program.Sub.Comments.End
